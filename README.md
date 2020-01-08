@@ -1,6 +1,6 @@
 # Labforward Code Challenge for Backend Engineer Candidate
 
-This is a simple Hello World API for recruiting purposes. You, as a candidate, should work on the challenge on your own account and create a PR with your solution. 
+This is a simple Hello World API for recruiting purposes. You, as a candidate, should work on the challenge on your own account. Please clone the repo to your account and create a PR with your solution. 
 
 ## Introduction
 
