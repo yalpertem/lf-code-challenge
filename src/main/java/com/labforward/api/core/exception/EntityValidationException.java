@@ -4,6 +4,11 @@ import org.springframework.validation.BindingResult;
 
 public class EntityValidationException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7724416530227795532L;
+
 	public static String MESSAGE = "Bad Request";
 
 	private BindingResult bindingResult;

@@ -9,7 +9,7 @@ import java.util.ListIterator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Valid;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.RegExUtils;
 
 public class BeanValidationUtils {
 
@@ -17,7 +17,7 @@ public class BeanValidationUtils {
 
 	public static boolean setErrorMessageAndReturnFalse(ConstraintValidatorContext constraintValidatorContext,
 	                                                    String field, String message) {
-		String sanitizedMessage = StringUtils.removePattern(message, "(\\{|\\}|\\[|\\])");
+		String sanitizedMessage = RegExUtils.removePattern(message, "(\\{|\\}|\\[|\\])");
 		StringBuilder errorMessage = new StringBuilder().append(field)
 		                                                .append(OBJECT_ERROR_DELIMITER)
 		                                                .append(sanitizedMessage);
@@ -31,7 +31,7 @@ public class BeanValidationUtils {
 	                                      String field, String message) {
 		constraintValidatorContext.disableDefaultConstraintViolation();
 		constraintValidatorContext.buildConstraintViolationWithTemplate(message)
-		                          .addNode(field)
+		                          .addPropertyNode(field)
 		                          .addConstraintViolation();
 	}
 

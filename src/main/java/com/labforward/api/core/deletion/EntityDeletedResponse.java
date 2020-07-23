@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
  * Marker class to return on successful
  * entity deleting
  */
-public class EntityDeletedResponse extends ResponseEntity {
+public class EntityDeletedResponse extends ResponseEntity<Object> {
 	
 	public EntityDeletedResponse() {
 		super(HttpStatus.OK);

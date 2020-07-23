@@ -8,6 +8,11 @@ package com.labforward.api.core.exception;
  */
 public class UnsupportedMediaTypeException extends RuntimeException {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4694599873449671407L;
+
 	public UnsupportedMediaTypeException() {
 		super("");
 	}
