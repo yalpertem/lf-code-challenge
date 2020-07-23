@@ -32,6 +32,11 @@ public class HelloWorldService {
 	private static Greeting getDefault() {
 		return new Greeting(DEFAULT_ID, DEFAULT_MESSAGE);
 	}
+	
+	public Greeting updateGreeting(String id, Greeting request) {
+		entityValidator.validateUpdate(id, request);
+		return save(request);
+	}
 
 	public Greeting createGreeting(Greeting request) {
 		entityValidator.validateCreate(request);
