@@ -80,13 +80,13 @@ public class HelloControllerTest extends MVCIntegrationTest {
 	}
 
 	@Test
-	public void postHelloIsOKWhenRequiredGreetingProvided() throws Exception {
+	public void postHelloIsCreatedWhenRequiredGreetingProvided() throws Exception {
 		Greeting hello = new Greeting(HELLO_LUKE);
 		final String body = getGreetingBody(hello);
 
 		mockMvc.perform(post("/hello").contentType(MediaType.APPLICATION_JSON)
 		                              .content(body))
-		       .andExpect(status().isOk())
+		       .andExpect(status().isCreated())
 		       .andExpect(jsonPath("$.message", is(hello.getMessage())));
 	}
 	
