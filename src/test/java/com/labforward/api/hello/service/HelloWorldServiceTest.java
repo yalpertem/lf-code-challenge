@@ -1,4 +1,4 @@
-package com.labforward.api.hello;
+package com.labforward.api.hello.service;
 
 import java.util.Optional;
 
@@ -12,7 +12,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import com.labforward.api.core.exception.EntityValidationException;
 import com.labforward.api.core.exception.ResourceNotFoundException;
 import com.labforward.api.hello.domain.Greeting;
-import com.labforward.api.hello.service.HelloWorldService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
