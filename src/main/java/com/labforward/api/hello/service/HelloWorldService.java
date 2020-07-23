@@ -1,5 +1,6 @@
 package com.labforward.api.hello.service;
 
+import com.labforward.api.core.exception.ResourceNotFoundException;
 import com.labforward.api.core.validation.EntityValidator;
 import com.labforward.api.hello.domain.Greeting;
 import org.springframework.stereotype.Service;
@@ -31,6 +32,14 @@ public class HelloWorldService {
 
 	private static Greeting getDefault() {
 		return new Greeting(DEFAULT_ID, DEFAULT_MESSAGE);
+	}
+	
+	public void deleteGreeting(String id) {
+		entityValidator.validateDelete(id);
+		if (!this.greetings.containsKey(id)) {
+			throw new ResourceNotFoundException();
+		}
+		this.greetings.remove(id);
 	}
 	
 	public Greeting updateGreeting(String id, Greeting request) {

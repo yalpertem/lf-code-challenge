@@ -1,6 +1,7 @@
 package com.labforward.api.hello;
 
 import com.labforward.api.core.exception.EntityValidationException;
+import com.labforward.api.core.exception.ResourceNotFoundException;
 import com.labforward.api.hello.domain.Greeting;
 import com.labforward.api.hello.service.HelloWorldService;
 import org.junit.Assert;
@@ -82,5 +83,25 @@ public class HelloWorldServiceTest {
 		Greeting updated = helloService.updateGreeting(created.getId(), created);
 		
 		Assert.assertEquals(HELLO_JANE, updated.getMessage());
+	}
+	
+	@Test(expected = ResourceNotFoundException.class)
+	public void deleteGreetingWithEmptyIdThrowsException() {
+		helloService.deleteGreeting(EMPTY_ID);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void deleteGreetingWithNullIdThrowsException() {
+		helloService.deleteGreeting(null);
+	}
+	
+	@Test
+	public void deleteGreetingOKWhenValidRequest() {
+		Greeting request = new Greeting(HELLO_LUKE);
+		Greeting created = helloService.createGreeting(request);
+		helloService.deleteGreeting(created.getId());
+		Optional<Greeting> deleted = helloService.getGreeting(created.getId());
+		
+		Assert.assertTrue(deleted.isEmpty());
 	}
 }

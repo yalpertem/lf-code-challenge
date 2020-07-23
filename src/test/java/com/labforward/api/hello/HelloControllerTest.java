@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -131,7 +132,7 @@ public class HelloControllerTest extends MVCIntegrationTest {
 	}
 	
 	@Test
-	public void putHelloReturnsUnprocessableEntityWhenIdIsNotProvidedAsQueryParameter() throws Exception {
+	public void putHelloReturnsMethodNotAllowedWhenIdIsNotProvidedAsQueryParameter() throws Exception {
 		Greeting hello = new Greeting(DUMMY_ID, HELLO_LUKE);
 		final String body = getGreetingBody(hello);
 		mockMvc.perform(put("/hello").content(body).contentType(MediaType.APPLICATION_JSON))
@@ -165,7 +166,31 @@ public class HelloControllerTest extends MVCIntegrationTest {
 		                              .content(body))
 		       .andExpect(status().isOk())
 		       .andExpect(jsonPath("$.message", is(hello.getMessage())));
+	}
+	
+	@Test
+	public void deleteHelloReturnsMethodNotAllowedWhenIdIsNotProvidedAsQueryParameter() throws Exception {
+		mockMvc.perform(delete("/hello").contentType(MediaType.APPLICATION_JSON))
+		       .andExpect(status().isMethodNotAllowed());
+	}
+
+	@Test
+	public void deleteHelloIsOKWhenRequiredGreetingProvided() throws Exception {
+		Greeting hello = new Greeting(HELLO_LUKE);
+		final String body = getGreetingBody(hello);
+		mockMvc.perform(post("/hello").contentType(MediaType.APPLICATION_JSON)
+		                              .content(body));
+
+		mockMvc.perform(delete("/hello/" + DUMMY_ID).contentType(MediaType.APPLICATION_JSON)
+													.content(body))
+			.andExpect(status().isOk());
 	}	
+	
+	@Test
+	public void deleteHelloIsNotFoundWhenGreetingDoesNotExist() throws Exception {
+		mockMvc.perform(delete("/hello/" + DUMMY_ID).contentType(MediaType.APPLICATION_JSON))
+			.andExpect(status().isNotFound());
+	}		
 
 	private String getGreetingBody(Greeting greeting) throws JSONException {
 		JSONObject json = new JSONObject().put("message", greeting.getMessage());
