@@ -1,6 +1,7 @@
 package com.labforward.api.hello.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -30,13 +31,13 @@ public class HelloController {
 
 	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	@ResponseBody
-	public Greeting helloWorld() {
-		return getHello(HelloWorldService.DEFAULT_ID);
+	public List<Greeting> getGreetings() {
+		return helloWorldService.getGreetings();
 	}
 
 	@RequestMapping(value = "/hello/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Greeting getHello(@PathVariable String id) {
+	public Greeting getGreeting(@PathVariable String id) {
 		return helloWorldService.getGreeting(id)
 		                        .orElseThrow(() -> new ResourceNotFoundException(GREETING_NOT_FOUND));
 	}

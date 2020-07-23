@@ -1,5 +1,6 @@
 package com.labforward.api.hello.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.Assert;
@@ -29,6 +30,15 @@ public class HelloWorldServiceTest {
 	public HelloWorldServiceTest() {
 	}
 
+	@Test
+	public void getGreetingsReturnsDefaultAllGreeting() {
+		Optional<Greeting> greeting = helloService.getDefaultGreeting();
+		List<Greeting> greetings = helloService.getGreetings();
+		
+		Assert.assertTrue(greetings.contains(greeting.get()));
+	}
+
+	
 	@Test
 	public void getDefaultGreetingIsOK() {
 		Optional<Greeting> greeting = helloService.getDefaultGreeting();

@@ -1,9 +1,9 @@
 package com.labforward.api.hello.domain;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.labforward.api.core.validation.Entity;
 import com.labforward.api.core.validation.EntityUpdateValidatorGroup;
-
-import javax.validation.constraints.NotEmpty;
 
 /**
  * Simple greeting message for dev purposes
@@ -27,7 +27,6 @@ public class Greeting implements Entity {
 
 	public Greeting(String message) {
 		this.message = message;
-		this.id = id;
 	}
 
 	public String getId() {
