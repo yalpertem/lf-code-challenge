@@ -1,14 +1,15 @@
 package com.labforward.api.core.validation;
 
-import org.apache.commons.lang3.StringUtils;
-
-import javax.validation.ConstraintValidatorContext;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+
+import javax.validation.ConstraintValidatorContext;
+import javax.validation.Valid;
+
+import org.apache.commons.lang3.StringUtils;
 
 public class BeanValidationUtils {
 

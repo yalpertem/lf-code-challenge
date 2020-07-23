@@ -1,9 +1,7 @@
 package com.labforward.api.hello;
 
-import com.labforward.api.core.exception.EntityValidationException;
-import com.labforward.api.core.exception.ResourceNotFoundException;
-import com.labforward.api.hello.domain.Greeting;
-import com.labforward.api.hello.service.HelloWorldService;
+import java.util.Optional;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Optional;
+import com.labforward.api.core.exception.EntityValidationException;
+import com.labforward.api.core.exception.ResourceNotFoundException;
+import com.labforward.api.hello.domain.Greeting;
+import com.labforward.api.hello.service.HelloWorldService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

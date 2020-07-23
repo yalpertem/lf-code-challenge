@@ -1,14 +1,16 @@
 package com.labforward.api.core.interceptors;
 
-import com.labforward.api.core.exception.UnsupportedMediaTypeException;
-import org.springframework.util.StringUtils;
-import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.util.StringUtils;
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import com.labforward.api.core.exception.UnsupportedMediaTypeException;
 
 /**
  * Interceptor to validate that client's incoming requests meet guidelines for

@@ -1,11 +1,5 @@
 package com.labforward.api.hello.controller;
 
-import com.labforward.api.core.creation.EntityCreatedResponse;
-import com.labforward.api.core.deletion.EntityDeletedResponse;
-import com.labforward.api.core.exception.ResourceNotFoundException;
-import com.labforward.api.hello.domain.Greeting;
-import com.labforward.api.hello.service.HelloWorldService;
-
 import java.net.URI;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.labforward.api.core.creation.EntityCreatedResponse;
+import com.labforward.api.core.deletion.EntityDeletedResponse;
+import com.labforward.api.core.exception.ResourceNotFoundException;
+import com.labforward.api.hello.domain.Greeting;
+import com.labforward.api.hello.service.HelloWorldService;
 
 @RestController
 public class HelloController {
