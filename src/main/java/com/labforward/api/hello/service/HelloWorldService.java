@@ -5,7 +5,10 @@ import com.labforward.api.core.validation.EntityValidator;
 import com.labforward.api.hello.domain.Greeting;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -52,6 +55,11 @@ public class HelloWorldService {
 
 		request.setId(UUID.randomUUID().toString());
 		return save(request);
+	}
+	
+	public List<Greeting> getGreetings() {
+		Collection<Greeting> greetings = new ArrayList<Greeting>(this.greetings.values());
+		return new ArrayList<Greeting>(greetings);
 	}
 
 	public Optional<Greeting> getGreeting(String id) {
