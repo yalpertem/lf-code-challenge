@@ -38,7 +38,7 @@ public class HelloWorldService {
 	}
 	
 	public void deleteGreeting(String id) {
-		//entityValidator.validateDelete(id);
+		entityValidator.validateDelete(id);
 		if (!this.greetings.containsKey(id)) {
 			throw new ResourceNotFoundException();
 		}

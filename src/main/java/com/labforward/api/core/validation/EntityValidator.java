@@ -25,7 +25,11 @@ public class EntityValidator {
 	public void validateUpdate(Object target, Object... groups) throws EntityValidationException {
 		validate(target, groups);
 	}
-
+	
+	public void validateDelete(String id) throws EntityValidationException {
+		Preconditions.checkArgument(id != null);
+	}
+	
 	public void validateUpdate(String id, Entity target) throws EntityValidationException {
 		Preconditions.checkArgument(id != null);
 		Preconditions.checkArgument(target != null);
