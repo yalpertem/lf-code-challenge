@@ -58,7 +58,7 @@ public class HelloWorldService {
 	}
 	
 	public List<Greeting> getGreetings() {
-		Collection<Greeting> greetings = new ArrayList<Greeting>(this.greetings.values());
+		Collection<Greeting> greetings = this.greetings.values();
 		return new ArrayList<Greeting>(greetings);
 	}
 
